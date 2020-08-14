@@ -645,7 +645,7 @@ def rep_condition_bktpomdp(person):
 
 n_subskills = 10
 n_tasks = 100
-n_rounds = 100
+n_rounds = 10
 n_actions = 20
 # ~ n_actions = 20
 # ~ all_subskills = create_random_subskills()
