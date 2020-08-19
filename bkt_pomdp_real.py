@@ -457,75 +457,130 @@ n_tasks = 12
 n_rounds = 23
 n_actions = 12
 
-# ~ p_sw = SubSkill("p_sw", 0.03, 0.47)
-# ~ p_led = SubSkill("p_led", 0.05, 0.42)
-# ~ p_res = SubSkill("p_res", 0.16, 0.39)
-# ~ p_mc = SubSkill("p_mc", 0.05, 0.57)
-# ~ p_sp = SubSkill("p_sp", 0.04, 0.40)
-# ~ p_pr = SubSkill("p_pr", 0.04, 0.13)
 
-# ~ l_sw = SubSkill("l_sw", 0.13, 0.26)
-# ~ l_led = SubSkill("l_led", 0.17, 0.33)
-# ~ l_res = SubSkill("l_res", 0.20, 0.25)
-# ~ l_mc = SubSkill("l_mc", 0.09, 0.12)
-# ~ l_sp = SubSkill("l_sp", 0.16, 0.1)
-# ~ l_pr = SubSkill("l_pr", 0.07, 0.19)
+
+#####################################################
+
+# ~ #p>0.7
+# ~ p_sw = SubSkill("p_sw", 0.47, 0.03)
+# ~ p_led = SubSkill("p_led", 0.42, 0.05)
+# ~ p_res = SubSkill("p_res", 0.39, 0.16)
+# ~ p_mc = SubSkill("p_mc", 0.57, 0.05)
+# ~ p_sp = SubSkill("p_sp", 0.4, 0.04)
+# ~ p_pr = SubSkill("p_pr", 0.13, 0.04)
+
+# ~ l_sw = SubSkill("l_sw", 0.26, 0.13)
+# ~ l_led = SubSkill("l_led", 0.33, 0.17)
+# ~ l_res = SubSkill("l_res", 0.24, 0.20)
+# ~ l_mc = SubSkill("l_mc", 0.12, 0.09)
+# ~ l_sp = SubSkill("l_sp", 0.1, 0.16)
+# ~ l_pr = SubSkill("l_pr", 0.19, 	0.07)
 
 # ~ d_sw = SubSkill("d_sw", 0.0, 0.0)
-# ~ d_led = SubSkill("d_led", 0.19, 0.27)
+# ~ d_led = SubSkill("d_led", 0.27, 0.18)
 # ~ d_res = SubSkill("d_res", 0.0, 0.0)
-# ~ d_mc = SubSkill("d_mc", 0.09, 0.11)
+# ~ d_mc = SubSkill("d_mc", 0.11, 0.09)
 # ~ d_sp = SubSkill("d_sp", 0.0, 0.0)
 # ~ d_pr = SubSkill("d_pr", 0.0, 0.0)
 
 
+#p>0.7 + change
+p_sw = SubSkill("p_sw", 0.3, 0.03)
+p_led = SubSkill("p_led", 0.3, 0.05)
+p_res = SubSkill("p_res", 0.30, 0.16)
+p_mc = SubSkill("p_mc", 0.3, 0.05)
+p_sp = SubSkill("p_sp", 0.3, 0.04)
+p_pr = SubSkill("p_pr", 0.13, 0.04)
 
-
-p_sw = SubSkill("p_sw", 0.03, 0.3)
-p_led = SubSkill("p_led", 0.05, 0.3)
-p_res = SubSkill("p_res", 0.16, 0.3)
-p_mc = SubSkill("p_mc", 0.05, 0.3)
-p_sp = SubSkill("p_sp", 0.04, 0.3)
-p_pr = SubSkill("p_pr", 0.04, 0.13)
-
-l_sw = SubSkill("l_sw", 0.13, 0.26)
-l_led = SubSkill("l_led", 0.17, 0.30)
-l_res = SubSkill("l_res", 0.20, 0.25)
-l_mc = SubSkill("l_mc", 0.09, 0.12)
-l_sp = SubSkill("l_sp", 0.16, 0.1)
-l_pr = SubSkill("l_pr", 0.07, 0.19)
+l_sw = SubSkill("l_sw", 0.26, 0.13)
+l_led = SubSkill("l_led", 0.30, 0.17)
+l_res = SubSkill("l_res", 0.24, 0.20)
+l_mc = SubSkill("l_mc", 0.12, 0.09)
+l_sp = SubSkill("l_sp", 0.1, 0.16)
+l_pr = SubSkill("l_pr", 0.19, 	0.07)
 
 d_sw = SubSkill("d_sw", 0.0, 0.0)
-d_led = SubSkill("d_led", 0.19, 0.27)
+d_led = SubSkill("d_led", 0.27, 0.18)
 d_res = SubSkill("d_res", 0.0, 0.0)
-d_mc = SubSkill("d_mc", 0.09, 0.11)
+d_mc = SubSkill("d_mc", 0.11, 0.09)
 d_sp = SubSkill("d_sp", 0.0, 0.0)
 d_pr = SubSkill("d_pr", 0.0, 0.0)
 
 
 
 
+#####################################################
 
-# ~ p_sw = SubSkill("p_sw", 0.07, 0.07)
-# ~ p_led = SubSkill("p_led", 0.08, 0.29)
-# ~ p_res = SubSkill("p_res", 0.31, 0.18)
-# ~ p_mc = SubSkill("p_mc", 0.10, 0.01)
-# ~ p_sp = SubSkill("p_sp", 0.09, 0.25)
-# ~ p_pr = SubSkill("p_pr", 0.04, 0.13)
+# p > 0.6
+# ~ p_sw = SubSkill("p_sw", 0.47, 0.03)
+# ~ p_led = SubSkill("p_led", 0.29, 0.08)
+# ~ p_res = SubSkill("p_res", 0.39, 0.16)
+# ~ p_mc = SubSkill("p_mc", 0.57, 0.05)
+# ~ p_sp = SubSkill("p_sp", 0.4, 0.04)
+# ~ p_pr = SubSkill("p_pr", 0.13, 0.04)
 
-# ~ l_sw = SubSkill("l_sw", 0.27, 0.07)
-# ~ l_led = SubSkill("l_led", 0.30, 0.10)
-# ~ l_res = SubSkill("l_res", 0.36, 0.07)
-# ~ l_mc = SubSkill("l_mc", 0.13, 0.09)
-# ~ l_sp = SubSkill("l_sp", 0.16, 0.1)
-# ~ l_pr = SubSkill("l_pr", 0.15, 0.07)
+# ~ l_sw = SubSkill("l_sw", 0.26, 0.13)
+# ~ l_led = SubSkill("l_led", 0.1, 0.3)
+# ~ l_res = SubSkill("l_res", 0.25, 0.20)
+# ~ l_mc = SubSkill("l_mc", 0.12, 0.09)
+# ~ l_sp = SubSkill("l_sp", 0.1, 0.16)
+# ~ l_pr = SubSkill("l_pr", 0.19, 0.07)
 
 # ~ d_sw = SubSkill("d_sw", 0.0, 0.0)
-# ~ d_led = SubSkill("d_led", 0.32, 0.13)
+# ~ d_led = SubSkill("d_led", 0.13, 0.33)
 # ~ d_res = SubSkill("d_res", 0.0, 0.0)
-# ~ d_mc = SubSkill("d_mc", 0.09, 0.11)
+# ~ d_mc = SubSkill("d_mc", 0.11, 0.09)
 # ~ d_sp = SubSkill("d_sp", 0.0, 0.0)
 # ~ d_pr = SubSkill("d_pr", 0.0, 0.0)
+
+# p > 0.6, change when above 0.3
+# ~ p_sw = SubSkill("p_sw", 0.3, 0.03)
+# ~ p_led = SubSkill("p_led", 0.29, 0.08)
+# ~ p_res = SubSkill("p_res", 0.3, 0.16)
+# ~ p_mc = SubSkill("p_mc", 0.3, 0.05)
+# ~ p_sp = SubSkill("p_sp", 0.3, 0.04)
+# ~ p_pr = SubSkill("p_pr", 0.13, 0.04)
+
+# ~ l_sw = SubSkill("l_sw", 0.26, 0.13)
+# ~ l_led = SubSkill("l_led", 0.1, 0.3)
+# ~ l_res = SubSkill("l_res", 0.25, 0.20)
+# ~ l_mc = SubSkill("l_mc", 0.12, 0.09)
+# ~ l_sp = SubSkill("l_sp", 0.1, 0.16)
+# ~ l_pr = SubSkill("l_pr", 0.19, 0.07)
+
+# ~ d_sw = SubSkill("d_sw", 0.0, 0.0)
+# ~ d_led = SubSkill("d_led", 0.13, 0.33)
+# ~ d_res = SubSkill("d_res", 0.0, 0.0)
+# ~ d_mc = SubSkill("d_mc", 0.11, 0.09)
+# ~ d_sp = SubSkill("d_sp", 0.0, 0.0)
+# ~ d_pr = SubSkill("d_pr", 0.0, 0.0)
+
+#####################################################
+# p > 0.5 
+# ~ p_sw = SubSkill("p_sw", 0.07, 0.07)
+# ~ p_led = SubSkill("p_led", 0.29, 0.08)
+# ~ p_res = SubSkill("p_res", 0.17, 0.31)
+# ~ p_mc = SubSkill("p_mc", 0.05, 0.10)
+# ~ p_sp = SubSkill("p_sp", 0.25, 0.10)
+# ~ p_pr = SubSkill("p_pr", 0.13, 0.04)
+
+# ~ l_sw = SubSkill("l_sw", 0.07, 0.27)
+# ~ l_led = SubSkill("l_led", 0.1, 0.3)
+# ~ l_res = SubSkill("l_res", 0.07, 0.36)
+# ~ l_mc = SubSkill("l_mc", 0.09, 0.13)
+# ~ l_sp = SubSkill("l_sp", 0.1, 0.16)
+# ~ l_pr = SubSkill("l_pr", 0.07, 0.15)
+
+# ~ d_sw = SubSkill("d_sw", 0.0, 0.0)
+# ~ d_led = SubSkill("d_led", 0.13, 0.33)
+# ~ d_res = SubSkill("d_res", 0.0, 0.0)
+# ~ d_mc = SubSkill("d_mc", 0.11, 0.09)
+# ~ d_sp = SubSkill("d_sp", 0.0, 0.0)
+# ~ d_pr = SubSkill("d_pr", 0.0, 0.0)
+
+
+
+
 
 
 	
@@ -894,6 +949,9 @@ p1_obs = [[1,1,0,-1,-1,-1,1,1,0,-1,-1,-1,-1,1,-1,-1,-1,-1],
 [1,-1,1,1,1,-1,1,-1,1,1,1,-1,-1,-1,-1,1,-1,-1],
 [-1,1,1,-1,-1,1,-1,1,1,-1,-1,1,-1,1,-1,-1,-1,-1]]
 
+
+
+#mastery > 0.7
 p1_skills = [1,1,0,1,1,1,1,0,0,1,1,1,0,0,0,1,0,0]
 p2_skills = [1,1,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0]
 p3_skills = [1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -918,6 +976,33 @@ p21_skills = [1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0]
 p22_skills = [0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0]
 p23_skills = [1,1,0,1,1,1,1,1,0,1,1,1,0,1,0,1,0,0]
 
+
+# mastery > 0.6
+# ~ p1_skills = [1,1,0,1,1,1,1,1,0,1,1,1,0,0,0,1,0,0]
+# ~ p2_skills = [1,1,0,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0]
+# ~ p3_skills = [1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p4_skills = [1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,0]
+# ~ p5_skills = [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p6_skills = [1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,0,0]
+# ~ p7_skills = [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p8_skills = [1,1,0,0,1,1,0,1,0,0,0,1,0,1,0,0,0,0]
+# ~ p9_skills = [0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p10_skills = [1,1,1,1,0,1,1,1,0,1,0,1,0,0,0,1,0,0]
+# ~ p11_skills = [1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p12_skills = [1,1,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0]
+# ~ p13_skills = [1,1,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,0]
+# ~ p14_skills = [1,1,0,1,1,1,0,1,0,1,0,1,0,0,0,1,0,0]
+# ~ p15_skills = [1,1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,0]
+# ~ p16_skills = [1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p17_skills = [1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p18_skills = [1,1,1,1,1,1,0,1,1,1,1,1,0,1,0,1,0,0]
+# ~ p19_skills = [1,1,1,0,1,1,0,1,0,0,1,1,0,1,0,0,0,0]
+# ~ p20_skills = [1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p21_skills = [1,1,0,1,1,1,0,1,0,0,0,0,0,1,0,0,0,0]
+# ~ p22_skills = [0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0]
+# ~ p23_skills = [1,1,0,1,1,1,1,1,0,1,1,1,0,1,0,1,0,0]
+
+# mastery > 0.5
 # ~ p1_skills = [1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,0,0]
 # ~ p2_skills = [1,1,0,1,1,1,1,1,0,0,0,0,0,1,0,0,0,0]
 # ~ p3_skills = [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -941,6 +1026,8 @@ p23_skills = [1,1,0,1,1,1,1,1,0,1,1,1,0,1,0,1,0,0]
 # ~ p21_skills = [1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,0,0,0]
 # ~ p22_skills = [1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0]
 # ~ p23_skills = [1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,0]
+
+
 
 
 
@@ -1062,18 +1149,20 @@ average_perfect_dist = [(x / n_rounds)-2 for x  in sum_perfect_dist]
 # ~ print (average_handcrafted)
 # ~ print (average_perfect)
 
-plt.plot(average_bktpomdp_dist, color='red')
-plt.plot(average_random_dist, color='green')
-plt.plot(average_handcrafted_dist , color='blue')
-plt.plot(average_perfect_dist, color='yellow')
-plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
-plt.show()
+
 
 
 plt.plot(average_bktpomdp, color='red')
 plt.plot(average_random, color='green')
 plt.plot(average_handcrafted , color='blue')
 plt.plot(average_perfect, color='yellow')
+plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
+plt.show()
+
+plt.plot(average_bktpomdp_dist, color='red')
+plt.plot(average_random_dist, color='green')
+plt.plot(average_handcrafted_dist , color='blue')
+plt.plot(average_perfect_dist, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
 plt.show()
 
