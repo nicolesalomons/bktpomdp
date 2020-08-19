@@ -1150,27 +1150,47 @@ average_perfect_dist = [(x / n_rounds)-2 for x  in sum_perfect_dist]
 # ~ print (average_perfect)
 
 
+# ~ tnr = {'fontname':'Times New Roman'}
+
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
+plt.rcParams.update({'font.size': 15})
 
 
+plt.figure(figsize=(6,4))
+plt.gcf().subplots_adjust(bottom=0.15)
+plt.title("Average Distance to True Skills")
 plt.plot(average_bktpomdp, color='red')
 plt.plot(average_random, color='green')
 plt.plot(average_handcrafted , color='blue')
 plt.plot(average_perfect, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
+plt.xlabel('Number of Actions Completed')
+plt.ylabel('Distance to True Skills')
 plt.show()
 
+plt.figure(figsize=(6,4))
+plt.gcf().subplots_adjust(bottom=0.15)
+plt.title("Average Knowledge of Skills")
 plt.plot(average_bktpomdp_dist, color='red')
 plt.plot(average_random_dist, color='green')
 plt.plot(average_handcrafted_dist , color='blue')
 plt.plot(average_perfect_dist, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
+plt.xlabel('Number of Actions Completed')
+plt.ylabel('Distance to Certainty of All Skills')
 plt.show()
 
+plt.figure(figsize=(6,4))
+plt.gcf().subplots_adjust(bottom=0.15)
+plt.title("Number of Skills with Certainty")
 plt.plot(average_bktpomdp_known, color='red')
 plt.plot(average_random_known, color='green')
 plt.plot(average_handcrafted_known , color='blue')
 plt.plot(average_perfect_known, color='yellow')
 plt.axis([0, n_actions, 0, n_subskills - 4])
+plt.xlabel('Number of Actions Completed')
+plt.ylabel('Number of Skills with Certainty')
 plt.show()
 
 
