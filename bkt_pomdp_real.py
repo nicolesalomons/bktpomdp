@@ -185,7 +185,7 @@ def distance_to_persons_skills(person, belief):
 def number_skills_certain(belief):
 	r = 0
 	for b in belief:
-		if b > 0.90 or b < 0.10:
+		if b > 0.95 or b < 0.05:
 			r+=1
 	return r
 			
@@ -1129,20 +1129,31 @@ sum_bktpomdp_dist = [sum(x) for x in zip(*all_bktpomdp_dist)]
 sum_handcrafted_dist = [sum(x) for x in zip(*all_handcrafted_dist)]
 sum_perfect_dist = [sum(x) for x in zip(*all_perfect_dist)]
 
-average_random = [(x / n_rounds)-2 for x  in sum_random] 
-average_bktpomdp = [(x / n_rounds)-2 for x  in sum_bktpomdp] 
-average_handcrafted = [(x / n_rounds)-2 for x  in sum_handcrafted] 
-average_perfect = [(x / n_rounds)-2 for x  in sum_perfect] 
+# ~ average_random = [(x / n_rounds)-2 for x  in sum_random] 
+# ~ average_bktpomdp = [(x / n_rounds)-2 for x  in sum_bktpomdp] 
+# ~ average_handcrafted = [(x / n_rounds)-2 for x  in sum_handcrafted] 
+# ~ average_perfect = [(x / n_rounds)-2 for x  in sum_perfect] 
+
+average_random2 = [7-((x / n_rounds)-2) for x  in sum_random] 
+average_bktpomdp2 = [7-((x / n_rounds)-2) for x  in sum_bktpomdp] 
+average_handcrafted2 = [7-((x / n_rounds)-2) for x  in sum_handcrafted] 
+average_perfect2 = [7-((x / n_rounds)-2) for x  in sum_perfect] 
+
 
 average_random_known = [float(x) / n_rounds for x  in sum_random_known]
 average_bktpomdp_known = [float(x) / n_rounds for x  in sum_bktpomdp_known]
 average_handcrafted_known = [float(x) / n_rounds for x  in sum_handcrafted_known]
 average_perfect_known = [float(x) / n_rounds for x  in sum_perfect_known]
 
-average_random_dist = [(x / n_rounds)-2 for x  in sum_random_dist] 
-average_bktpomdp_dist = [(x / n_rounds)-2 for x  in sum_bktpomdp_dist] 
-average_handcrafted_dist = [(x / n_rounds)-2 for x  in sum_handcrafted_dist] 
-average_perfect_dist = [(x / n_rounds)-2 for x  in sum_perfect_dist] 
+# ~ average_random_dist = [((x / n_rounds)-2) for x  in sum_random_dist] 
+# ~ average_bktpomdp_dist = [((x / n_rounds)-2) for x  in sum_bktpomdp_dist] 
+# ~ average_handcrafted_dist = [((x / n_rounds)-2) for x  in sum_handcrafted_dist] 
+# ~ average_perfect_dist = [((x / n_rounds)-2) for x  in sum_perfect_dist] 
+
+average_random_dist2 = [7-((x / n_rounds)-2) for x  in sum_random_dist] 
+average_bktpomdp_dist2 = [7-((x / n_rounds)-2) for x  in sum_bktpomdp_dist] 
+average_handcrafted_dist2 = [7-((x / n_rounds)-2) for x  in sum_handcrafted_dist] 
+average_perfect_dist2 = [7-((x / n_rounds)-2) for x  in sum_perfect_dist] 
 
 # ~ print (average_random)
 # ~ print (average_bktpomdp)
@@ -1159,38 +1170,39 @@ plt.rcParams.update({'font.size': 18})
 
 plt.figure(figsize=(6,5))
 plt.gcf().subplots_adjust(bottom=0.15)
-plt.title("Distance to True Skills")
-plt.plot(average_bktpomdp, color='red')
-plt.plot(average_random, color='green')
-plt.plot(average_handcrafted , color='blue')
-plt.plot(average_perfect, color='yellow')
+plt.title('Average Skill Correctness')
+plt.plot(average_bktpomdp2, color='red')
+plt.plot(average_random2, color='green')
+plt.plot(average_handcrafted2, color='blue')
+plt.plot(average_perfect2, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
 plt.xlabel('Action Number')
-plt.ylabel('Average Distance to True Skills')
+plt.ylabel("Distance to True Skills")
 plt.show()
 
 plt.figure(figsize=(6,5))
 plt.gcf().subplots_adjust(bottom=0.15)
-plt.title("Certainty of Skills")
-plt.plot(average_bktpomdp_dist, color='red')
-plt.plot(average_random_dist, color='green')
-plt.plot(average_handcrafted_dist , color='blue')
-plt.plot(average_perfect_dist, color='yellow')
+plt.title('Average Skill Confidence')
+plt.plot(average_bktpomdp_dist2, color='red')
+plt.plot(average_random_dist2, color='green')
+plt.plot(average_handcrafted_dist2, color='blue')
+plt.plot(average_perfect_dist2, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
+# ~ plt.axis([0, n_actions, 0.5*n_subskills - 2,0])
 plt.xlabel('Action Number')
-plt.ylabel('Average Certainty of Skills')
+plt.ylabel("Confidence across all skills")
 plt.show()
 
 plt.figure(figsize=(6,5))
 plt.gcf().subplots_adjust(bottom=0.15)
-plt.title("Skills with Full Knowledge")
+plt.title('Average Skill Certainty')
 plt.plot(average_bktpomdp_known, color='red')
 plt.plot(average_random_known, color='green')
 plt.plot(average_handcrafted_known , color='blue')
 plt.plot(average_perfect_known, color='yellow')
 plt.axis([0, n_actions, 0, n_subskills - 4])
 plt.xlabel('Action Number')
-plt.ylabel('Number of Skills with Full Knowledge')
+plt.ylabel("Number of Skills with Certainty")
 plt.show()
 
 
