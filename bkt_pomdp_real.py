@@ -1177,7 +1177,7 @@ plt.plot(average_handcrafted2, color='blue')
 plt.plot(average_perfect2, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
 plt.xlabel('Action Number')
-plt.ylabel("Distance to True Skills")
+plt.ylabel("Similirity to True Skills")
 plt.show()
 
 plt.figure(figsize=(6,5))
