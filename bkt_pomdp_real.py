@@ -1112,7 +1112,32 @@ for p in all_people_main:
 	all_perfect_known.append(perfect_known)
 	all_perfect_dist.append(perfect_distance)
 
+
+random_4 = []
+hand_4 = []
+bktpomdp_4 = []
+optimal_4 = []	
+for i in range(0, len(all_random)):
+	# ~ random_4.append(7-(all_random[i][5]-2))
+	# ~ hand_4.append(7-(all_handcrafted[i][5]-2))
+	# ~ bktpomdp_4.append(7-(all_bktpomdp[i][5]-2))
+	# ~ optimal_4.append(7-(all_perfect[i][5]-2))
 	
+	# ~ random_4.append((all_random_known[i][5]))
+	# ~ hand_4.append((all_handcrafted_known[i][5]))
+	# ~ bktpomdp_4.append((all_bktpomdp_known[i][5]))
+	# ~ optimal_4.append((all_perfect_known[i][5]))
+	
+	random_4.append(7-(all_random_dist[i][5]-2))
+	hand_4.append(7-(all_handcrafted_dist[i][5]-2))
+	bktpomdp_4.append(7-(all_bktpomdp_dist[i][5]-2))
+	optimal_4.append(7-(all_perfect_dist[i][5]-2))
+	
+print random_4
+print hand_4
+print bktpomdp_4
+print optimal_4
+
 sum_random = [sum(x) for x in zip(*all_random)]
 sum_bktpomdp = [sum(x) for x in zip(*all_bktpomdp)]
 sum_handcrafted = [sum(x) for x in zip(*all_handcrafted)]

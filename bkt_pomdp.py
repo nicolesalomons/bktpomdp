@@ -667,7 +667,7 @@ def rep_condition_bktpomdp(person):
 
 n_subskills = 20
 n_tasks = 200
-n_rounds = 100
+n_rounds = 500
 n_actions = 40
 # ~ n_actions = 20
 # ~ all_subskills = create_random_subskills()
@@ -731,6 +731,81 @@ for i in range(0,n_rounds):
 	all_perfect.append(perfect_reward)
 	all_perfect_known.append(perfect_known)
 	all_perfect_dist.append(perfect_distance)
+	
+
+
+f_average = open("average.txt", "w")
+f_dist = open("dist.txt", "w")
+f_known = open("known.txt", "w")
+f_average.write(str(all_random))
+f_average.write(str(all_handcrafted))
+f_average.write(str(all_bktpomdp))
+f_average.write(str(all_perfect))
+f_dist.write(str(all_random_dist))
+f_dist.write(str(all_handcrafted_dist))
+f_dist.write(str(all_bktpomdp_dist))
+f_dist.write(str(all_perfect_dist))
+f_known.write(str(all_random_known))
+f_known.write(str(all_handcrafted_known))
+f_known.write(str(all_bktpomdp_known))
+f_known.write(str(all_perfect_known))
+f_average.close()
+f_dist.close()
+f_known.close()
+
+# ~ print str(all_random)
+
+quit()
+
+	
+
+random_20 = []
+hand_20 = []
+bktpomdp_20 = []
+optimal_20 = []
+
+k_random_20 = []
+k_hand_20 = []
+k_bktpomdp_20 = []
+k_optimal_20 = []
+
+d_random_20 = []
+d_hand_20 = []
+d_bktpomdp_20 = []
+d_optimal_20 = []
+for i in range(0, len(all_random)):
+	random_20.append(10-(all_random[i][20]))
+	hand_20.append(10-(all_handcrafted[i][20]))
+	bktpomdp_20.append(10-(all_bktpomdp[i][20]))
+	optimal_20.append(10-(all_perfect[i][20]))
+	
+	k_random_20.append((all_random_known[i][20]))
+	k_hand_20.append((all_handcrafted_known[i][20]))
+	k_bktpomdp_20.append((all_bktpomdp_known[i][20]))
+	k_optimal_20.append((all_perfect_known[i][20]))
+	
+	d_random_20.append(10-(all_random_dist[i][20]))
+	d_hand_20.append(10-(all_handcrafted_dist[i][20]))
+	d_bktpomdp_20.append(10-(all_bktpomdp_dist[i][20]))
+	d_optimal_20.append(10-(all_perfect_dist[i][20]))
+	
+print random_20
+print hand_20
+print bktpomdp_20
+print optimal_20
+print "---------------------------"
+
+print d_random_20
+print d_hand_20
+print d_bktpomdp_20
+print d_optimal_20
+print "---------------------------"
+
+print k_random_20
+print k_hand_20
+print k_bktpomdp_20
+print k_optimal_20
+print "---------------------------"
 	
 	
 sum_random = [sum(x) for x in zip(*all_random)]
