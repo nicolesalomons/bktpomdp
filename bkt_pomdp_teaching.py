@@ -804,7 +804,7 @@ def condition_bktpomdp(person):
 
 n_subskills = 20 #20
 n_tasks = 100 #200
-n_rounds = 100
+n_rounds = 200
 n_actions = 40 #50
 # ~ n_actions = 20
 # ~ all_subskills = create_random_subskills()
@@ -936,7 +936,7 @@ plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 plt.rcParams.update({'font.size': 18})
 
 
-plt.figure(figsize=(6,5))
+plt.figure(figsize=(7,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Skill Correctness')
 plt.plot(average_bktpomdp2, color='red')
@@ -973,7 +973,7 @@ plt.show()
 # ~ plt.show()
 
 
-plt.figure(figsize=(6,5))
+plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Distance From 1')
 plt.plot(average_bktpomdp_1dist, color='red')
