@@ -1133,10 +1133,55 @@ for i in range(0, len(all_random)):
 	bktpomdp_4.append(7-(all_bktpomdp_dist[i][5]-2))
 	optimal_4.append(7-(all_perfect_dist[i][5]-2))
 	
-print random_4
-print hand_4
-print bktpomdp_4
-print optimal_4
+# ~ print random_4
+# ~ print hand_4
+# ~ print bktpomdp_4
+# ~ print optimal_4
+
+list20_perfect = []
+list20_bktpomdp = []
+list20_hand = []
+list20_random = []
+list10_perfect = []
+list10_bktpomdp = []
+list10_hand = []
+list10_random = []
+list30_perfect = []
+list30_bktpomdp = []
+list30_hand = []
+list30_random = []
+for i in range(0, len(all_perfect)):
+	list20_perfect.append(round(all_perfect[i][5],2))
+	list20_hand.append(round(all_handcrafted[i][5],2))
+	list20_bktpomdp.append(round(all_bktpomdp[i][5],2))
+	list20_random.append(round(all_random[i][5],2))
+	list10_perfect.append(round(all_perfect[i][3],2))
+	list10_hand.append(round(all_handcrafted[i][3],2))
+	list10_bktpomdp.append(round(all_bktpomdp[i][3],2))
+	list10_random.append(round(all_random[i][3],2))
+	list30_perfect.append(round(all_perfect[i][7],2))
+	list30_hand.append(round(all_handcrafted[i][7],2))
+	list30_bktpomdp.append(round(all_bktpomdp[i][7],2))
+	list30_random.append(round(all_random[i][7],2))
+	
+known = open("real.txt", "w")
+known.write(str(list10_perfect)+"\n")
+known.write(str(list10_bktpomdp)+"\n")
+known.write(str(list10_hand)+"\n")
+known.write(str(list10_random)+"\n\n")
+
+# ~ known = open("distance1.txt", "w")
+known.write(str(list20_perfect)+"\n")
+known.write(str(list20_bktpomdp)+"\n")
+known.write(str(list20_hand)+"\n")
+known.write(str(list20_random)+"\n\n")
+
+# ~ known = open("distance1.txts", "w")
+known.write(str(list30_perfect)+"\n")
+known.write(str(list30_bktpomdp)+"\n")
+known.write(str(list30_hand)+"\n")
+known.write(str(list30_random)+"\n")
+known.close()
 
 sum_random = [sum(x) for x in zip(*all_random)]
 sum_bktpomdp = [sum(x) for x in zip(*all_bktpomdp)]
@@ -1193,7 +1238,7 @@ plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 plt.rcParams.update({'font.size': 18})
 
 
-plt.figure(figsize=(6,5))
+plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Skill Correctness')
 plt.plot(average_bktpomdp2, color='red')

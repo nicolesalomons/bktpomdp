@@ -78,8 +78,8 @@ def R_obs_teaching(past_belief,future_belief):
 	sum_b = 0
 	for i in range(0, n_subskills):
 		if (future_belief[i] > past_belief[i]):
-			sum_b += ((future_belief[i] - past_belief[i])*(future_belief[i] - past_belief[i]))
-			# ~ sum_b += (future_belief[i] - past_belief[i])
+			# ~ sum_b += ((future_belief[i] - past_belief[i])*(future_belief[i] - past_belief[i]))
+			sum_b += (future_belief[i] - past_belief[i])
 		else:
 			sum_b += 0
 			#sum_b += 0
@@ -451,10 +451,12 @@ def condition_random(person):
 	r_c = [0]
 	r_v.append(0.5*n_subskills)
 	#person = Person("Nicole")
-	n_actions = n_tasks
+	# ~ n_actions = n_tasks
 	r_d = []
-	r_o = []
+	r_o = [10]
 	r_d.append(0.5*n_subskills)
+	# ~ print "---"
+	# ~ print n_actions
 	for i in range(0, n_actions):
 		max_action = all_tasks[i]
 		update_learning(person, max_action)
@@ -519,7 +521,7 @@ def condition_handcrafted(person):
 	r_c = [0]
 	r_v.append(0.5*n_subskills)
 	r_d = []
-	r_o = []
+	r_o = [10]
 	r_d.append(0.5*n_subskills)
 	ts_since_tested = [0] * n_subskills
 	for i in range(0, n_actions):
@@ -660,9 +662,9 @@ def condition_perfect(person):
 	r_c = [0]
 	r_v.append(0.5*n_subskills)
 	r_d = []
-	r_o = []
+	r_o = [10]
 	r_d.append(0.5*n_subskills)
-	print "perfect---------"
+	# ~ print "perfect---------"
 	for i in range(0, n_actions):
 		max_action = perfect_choose(person)
 		ind = find_el(all_tasks_main, max_action)
@@ -695,7 +697,7 @@ def condition_perfect(person):
 		# ~ r_o.append(distance_to_one(new_belief))
 		# ~ person.belief = new_belief	
 		# ~ all_tasks.remove(max_action)
-	print person.belief
+	# ~ print person.belief
 	# ~ print "----------"
 	return r_v, r_c, r_d, r_o
 	
@@ -720,13 +722,7 @@ def probability_obs_bktpomdp(task, person, obs):
 				p2_correct = BKT_p_corr(person.belief[i],task.subskills[i])
 				p2 = p2*p2_correct
 				p = p*p_correct
-				# ~ print "v_c" + str(p_correct)
-	# ~ print person.skills
-	# ~ print person.belief
-	# ~ print obs
-	# ~ print p
-	# ~ print p2
-	# ~ print "-----"
+
 	return p2
 	
 def bktpomdp_choose(person):
@@ -736,34 +732,15 @@ def bktpomdp_choose(person):
 	for i in range(0, len(all_tasks)):
 		r_task = 0
 		task = all_tasks[i]
-		# ~ prev_skills = person.skills[:]
-		# ~ update_learning(person, max_action)
 		for obs in task.observations:
 			belief_new = update_b_learning(person.belief,obs,task) 			
-			# ~ update_learning(person, task)
-			
-			# ~ for i in range(0,n_subskills):
-				# ~ if (task.action[i] == 1):
-					# ~ if (prev_skills[i] == 0):
-						# ~ person.skills[i] = all_subskills[i].p_transit
-			# ~ print task.action
-			# ~ print person.skills
-
-
 			p_obs = probability_obs_bktpomdp(task, person, obs) 
 			reward = R_obs_teaching(person.belief, belief_new)
 			r_task += p_obs * reward
 
-			# ~ person.skills = prev_skills
-
 		if (r_task > max_d):
 			max_d = r_task
 			best_i = i
-		# ~ print task.action
-		# ~ print r_task
-		# ~ print "----"
-	# ~ print person.belief
-	# ~ print "***********"
 	return all_tasks[best_i]
 	
 	
@@ -775,9 +752,9 @@ def condition_bktpomdp(person):
 	r_c = [0]
 	r_v.append(0.5*n_subskills)
 	r_d = []
-	r_o = []
+	r_o = [10]
 	r_d.append(0.5*n_subskills)
-	print "bkt-------------------"
+	# ~ print "bkt-------------------"
 	for i in range(0,n_actions):
 		# ~ max_r, max_action = V_function_print(0,person.belief)
 		max_action = bktpomdp_choose(person)
@@ -792,10 +769,11 @@ def condition_bktpomdp(person):
 		r_d.append(round(dist,2))
 		r_c.append(number_skills_certain(new_belief))
 		r_o.append(distance_to_one(new_belief))
+		# ~ print distance_to_one(new_belief)
 		# ~ r_o.append(distance_to_one(person.skills))
 		person.belief = new_belief	
 		all_tasks.remove(max_action)
-	print person.belief
+	# ~ print person.belief
 	return r_v, r_c, r_d, r_o
 
 ###############################################################################################
@@ -804,7 +782,7 @@ def condition_bktpomdp(person):
 
 n_subskills = 20 #20
 n_tasks = 100 #200
-n_rounds = 200
+n_rounds = 100
 n_actions = 40 #50
 # ~ n_actions = 20
 # ~ all_subskills = create_random_subskills()
@@ -904,6 +882,51 @@ sum_bktpomdp_1dist = [sum(x) for x in zip(*all_bktpomdp_1dist)]
 sum_handcrafted_1dist = [sum(x) for x in zip(*all_handcrafted_1dist)]
 sum_perfect_1dist = [sum(x) for x in zip(*all_perfect_1dist)]
 
+list20_perfect = []
+list20_bktpomdp = []
+list20_hand = []
+list20_random = []
+list10_perfect = []
+list10_bktpomdp = []
+list10_hand = []
+list10_random = []
+list30_perfect = []
+list30_bktpomdp = []
+list30_hand = []
+list30_random = []
+for i in range(0, len(all_perfect_1dist)):
+	list20_perfect.append(round(all_perfect_1dist[i][20],2))
+	list20_hand.append(round(all_handcrafted_1dist[i][20],2))
+	list20_bktpomdp.append(round(all_bktpomdp_1dist[i][20],2))
+	list20_random.append(round(all_random_1dist[i][20],2))
+	list10_perfect.append(round(all_perfect_1dist[i][10],2))
+	list10_hand.append(round(all_handcrafted_1dist[i][10],2))
+	list10_bktpomdp.append(round(all_bktpomdp_1dist[i][10],2))
+	list10_random.append(round(all_random_1dist[i][10],2))
+	list30_perfect.append(round(all_perfect_1dist[i][30],2))
+	list30_hand.append(round(all_handcrafted_1dist[i][30],2))
+	list30_bktpomdp.append(round(all_bktpomdp_1dist[i][30],2))
+	list30_random.append(round(all_random_1dist[i][30],2))
+	
+known = open("distance1.txt", "w")
+known.write(str(list10_perfect)+"\n")
+known.write(str(list10_bktpomdp)+"\n")
+known.write(str(list10_hand)+"\n")
+known.write(str(list10_random)+"\n\n")
+
+# ~ known = open("distance1.txt", "w")
+known.write(str(list20_perfect)+"\n")
+known.write(str(list20_bktpomdp)+"\n")
+known.write(str(list20_hand)+"\n")
+known.write(str(list20_random)+"\n\n")
+
+# ~ known = open("distance1.txts", "w")
+known.write(str(list30_perfect)+"\n")
+known.write(str(list30_bktpomdp)+"\n")
+known.write(str(list30_hand)+"\n")
+known.write(str(list30_random)+"\n")
+known.close()
+
 
 average_random2 = [(n_subskills/2)-((x / n_rounds)) for x  in sum_random] 
 average_bktpomdp2 = [(n_subskills/2)-((x / n_rounds)) for x  in sum_bktpomdp] 
@@ -972,10 +995,11 @@ plt.show()
 # ~ plt.ylabel("Number of Skills with Certainty")
 # ~ plt.show()
 
-
+print len(average_bktpomdp_1dist)
+print len(average_random_1dist)
 plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
-plt.title('Average Distance From 1')
+plt.title('Average Distance From One')
 plt.plot(average_bktpomdp_1dist, color='red')
 plt.plot(average_random_1dist, color='green')
 plt.plot(average_handcrafted_1dist, color='blue')
@@ -983,7 +1007,7 @@ plt.plot(average_perfect_1dist, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills])
 # ~ plt.axis([0, n_actions, 0.5*n_subskills - 2,0])
 plt.xlabel('Action Number')
-plt.ylabel("Distance from 1")
+plt.ylabel("Distance from One")
 plt.show()
 
 

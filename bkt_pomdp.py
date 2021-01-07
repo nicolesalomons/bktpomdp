@@ -557,6 +557,45 @@ def condition_perfect(person):
 ##################          BKT - POMDP        ################################################
 ###############################################################################################
 
+def probability_obs_bktpomdp(task, person, obs):
+	p = 1
+	p2 = 1
+	for i in range(0,n_subskills):
+		if (task.action[i] == 1):
+			if (obs[i] == 0):
+				p_incorrect = BKT_p_inc(person.skills[i],task.subskills[i])
+				p2_incorrect = BKT_p_inc(person.belief[i],task.subskills[i])
+				p = p*p_incorrect
+				p2 = p2*p2_incorrect
+				# ~ print "v_i" + str(p_incorrect)
+			if (obs[i] == 1):
+				p_correct = BKT_p_corr(person.skills[i],task.subskills[i])
+				p2_correct = BKT_p_corr(person.belief[i],task.subskills[i])
+				p2 = p2*p2_correct
+				p = p*p_correct
+
+	return p2
+	
+def bktpomdp_choose(person):
+	best_i = -1
+	min_d = 99
+	max_d = -1000
+	for i in range(0, len(all_tasks)):
+		r_task = 0
+		task = all_tasks[i]
+		for obs in task.observations:
+			# ~ belief_new = update_b_learning(person.belief,obs,task) 
+			belief_new = update_b(obs,person.belief,task)
+			p_obs = probability_obs_bktpomdp(task, person, obs) 
+			reward  = R_obs(person.belief, belief_new)
+			#reward = R_obs_teach(person.belief, belief_new)
+			r_task += p_obs * reward
+
+		if (r_task > max_d):
+			max_d = r_task
+			best_i = i
+	return all_tasks[best_i]
+	
 	
 def condition_bktpomdp(person):
 	#person = Person("Nicole")
@@ -568,7 +607,8 @@ def condition_bktpomdp(person):
 	r_d = []
 	r_d.append(0.5*n_subskills)
 	for i in range(0,n_actions):
-		max_r, max_action = V_function_print(0,person.belief)
+		# ~ max_r, max_action = V_function_print(0,person.belief)
+		max_action = bktpomdp_choose(person)
 		ind = find_el(all_tasks_main, max_action)
 		obs = person.obs[ind]
 		# ~ print "bktpomdp"
@@ -666,8 +706,8 @@ def rep_condition_bktpomdp(person):
 ###############################################################################################
 
 n_subskills = 20
-n_tasks = 200
-n_rounds = 500
+n_tasks = 100
+n_rounds = 100
 n_actions = 40
 # ~ n_actions = 20
 # ~ all_subskills = create_random_subskills()
@@ -734,78 +774,122 @@ for i in range(0,n_rounds):
 	
 
 
-f_average = open("average.txt", "w")
-f_dist = open("dist.txt", "w")
-f_known = open("known.txt", "w")
-f_average.write(str(all_random))
-f_average.write(str(all_handcrafted))
-f_average.write(str(all_bktpomdp))
-f_average.write(str(all_perfect))
-f_dist.write(str(all_random_dist))
-f_dist.write(str(all_handcrafted_dist))
-f_dist.write(str(all_bktpomdp_dist))
-f_dist.write(str(all_perfect_dist))
-f_known.write(str(all_random_known))
-f_known.write(str(all_handcrafted_known))
-f_known.write(str(all_bktpomdp_known))
-f_known.write(str(all_perfect_known))
-f_average.close()
-f_dist.close()
-f_known.close()
+# ~ f_average = open("average.txt", "w")
+# ~ f_dist = open("dist.txt", "w")
+# ~ f_known = open("known.txt", "w")
+# ~ f_average.write(str(all_random))
+# ~ f_average.write(str(all_handcrafted))
+# ~ f_average.write(str(all_bktpomdp))
+# ~ f_average.write(str(all_perfect))
+# ~ f_dist.write(str(all_random_dist))
+# ~ f_dist.write(str(all_handcrafted_dist))
+# ~ f_dist.write(str(all_bktpomdp_dist))
+# ~ f_dist.write(str(all_perfect_dist))
+# ~ f_known.write(str(all_random_known))
+# ~ f_known.write(str(all_handcrafted_known))
+# ~ f_known.write(str(all_bktpomdp_known))
+# ~ f_known.write(str(all_perfect_known))
+# ~ f_average.close()
+# ~ f_dist.close()
+# ~ f_known.close()
 
-# ~ print str(all_random)
 
-quit()
+# ~ quit()
 
 	
 
-random_20 = []
-hand_20 = []
-bktpomdp_20 = []
-optimal_20 = []
+# ~ random_20 = []
+# ~ hand_20 = []
+# ~ bktpomdp_20 = []
+# ~ optimal_20 = []
 
-k_random_20 = []
-k_hand_20 = []
-k_bktpomdp_20 = []
-k_optimal_20 = []
+# ~ k_random_20 = []
+# ~ k_hand_20 = []
+# ~ k_bktpomdp_20 = []
+# ~ k_optimal_20 = []
 
-d_random_20 = []
-d_hand_20 = []
-d_bktpomdp_20 = []
-d_optimal_20 = []
-for i in range(0, len(all_random)):
-	random_20.append(10-(all_random[i][20]))
-	hand_20.append(10-(all_handcrafted[i][20]))
-	bktpomdp_20.append(10-(all_bktpomdp[i][20]))
-	optimal_20.append(10-(all_perfect[i][20]))
+# ~ d_random_20 = []
+# ~ d_hand_20 = []
+# ~ d_bktpomdp_20 = []
+# ~ d_optimal_20 = []
+# ~ for i in range(0, len(all_random)):
+	# ~ random_20.append(10-(all_random[i][20]))
+	# ~ hand_20.append(10-(all_handcrafted[i][20]))
+	# ~ bktpomdp_20.append(10-(all_bktpomdp[i][20]))
+	# ~ optimal_20.append(10-(all_perfect[i][20]))
 	
-	k_random_20.append((all_random_known[i][20]))
-	k_hand_20.append((all_handcrafted_known[i][20]))
-	k_bktpomdp_20.append((all_bktpomdp_known[i][20]))
-	k_optimal_20.append((all_perfect_known[i][20]))
+	# ~ k_random_20.append((all_random_known[i][20]))
+	# ~ k_hand_20.append((all_handcrafted_known[i][20]))
+	# ~ k_bktpomdp_20.append((all_bktpomdp_known[i][20]))
+	# ~ k_optimal_20.append((all_perfect_known[i][20]))
 	
-	d_random_20.append(10-(all_random_dist[i][20]))
-	d_hand_20.append(10-(all_handcrafted_dist[i][20]))
-	d_bktpomdp_20.append(10-(all_bktpomdp_dist[i][20]))
-	d_optimal_20.append(10-(all_perfect_dist[i][20]))
+	# ~ d_random_20.append(10-(all_random_dist[i][20]))
+	# ~ d_hand_20.append(10-(all_handcrafted_dist[i][20]))
+	# ~ d_bktpomdp_20.append(10-(all_bktpomdp_dist[i][20]))
+	# ~ d_optimal_20.append(10-(all_perfect_dist[i][20]))
 	
-print random_20
-print hand_20
-print bktpomdp_20
-print optimal_20
-print "---------------------------"
+# ~ print random_20
+# ~ print hand_20
+# ~ print bktpomdp_20
+# ~ print optimal_20
+# ~ print "---------------------------"
 
-print d_random_20
-print d_hand_20
-print d_bktpomdp_20
-print d_optimal_20
-print "---------------------------"
+# ~ print d_random_20
+# ~ print d_hand_20
+# ~ print d_bktpomdp_20
+# ~ print d_optimal_20
+# ~ print "---------------------------"
 
-print k_random_20
-print k_hand_20
-print k_bktpomdp_20
-print k_optimal_20
-print "---------------------------"
+# ~ print k_random_20
+# ~ print k_hand_20
+# ~ print k_bktpomdp_20
+# ~ print k_optimal_20
+# ~ print "---------------------------"
+
+list20_perfect = []
+list20_bktpomdp = []
+list20_hand = []
+list20_random = []
+list10_perfect = []
+list10_bktpomdp = []
+list10_hand = []
+list10_random = []
+list30_perfect = []
+list30_bktpomdp = []
+list30_hand = []
+list30_random = []
+for i in range(0, len(all_perfect)):
+	list20_perfect.append(round(all_perfect[i][20],2))
+	list20_hand.append(round(all_handcrafted[i][20],2))
+	list20_bktpomdp.append(round(all_bktpomdp[i][20],2))
+	list20_random.append(round(all_random[i][20],2))
+	list10_perfect.append(round(all_perfect[i][10],2))
+	list10_hand.append(round(all_handcrafted[i][10],2))
+	list10_bktpomdp.append(round(all_bktpomdp[i][10],2))
+	list10_random.append(round(all_random[i][10],2))
+	list30_perfect.append(round(all_perfect[i][30],2))
+	list30_hand.append(round(all_handcrafted[i][30],2))
+	list30_bktpomdp.append(round(all_bktpomdp[i][30],2))
+	list30_random.append(round(all_random[i][30],2))
+	
+known = open("average.txt", "w")
+known.write(str(list10_perfect)+"\n")
+known.write(str(list10_bktpomdp)+"\n")
+known.write(str(list10_hand)+"\n")
+known.write(str(list10_random)+"\n\n")
+
+# ~ known = open("distance1.txt", "w")
+known.write(str(list20_perfect)+"\n")
+known.write(str(list20_bktpomdp)+"\n")
+known.write(str(list20_hand)+"\n")
+known.write(str(list20_random)+"\n\n")
+
+# ~ known = open("distance1.txts", "w")
+known.write(str(list30_perfect)+"\n")
+known.write(str(list30_bktpomdp)+"\n")
+known.write(str(list30_hand)+"\n")
+known.write(str(list30_random)+"\n")
+known.close()
 	
 	
 sum_random = [sum(x) for x in zip(*all_random)]
@@ -856,7 +940,7 @@ plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 plt.rcParams.update({'font.size': 18})
 
 
-plt.figure(figsize=(6,5))
+plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Skill Correctness')
 plt.plot(average_bktpomdp2, color='red')
