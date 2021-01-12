@@ -351,7 +351,7 @@ def print_belief(belief):
 			b.append(0)
 		else:
 			b.append(round(v, 2))
-	print b
+	print (b)
 	
 def find_el(the_list, the_el):
 	i = 0
@@ -706,7 +706,7 @@ def rep_condition_bktpomdp(person):
 ###############################################################################################
 
 n_subskills = 20
-n_tasks = 100
+n_tasks = 200
 n_rounds = 100
 n_actions = 40
 # ~ n_actions = 20
@@ -734,7 +734,7 @@ all_handcrafted_dist = []
 all_perfect_dist = []
 
 for i in range(0,n_rounds):
-	print i
+	print (i)
 	all_subskills = create_random_subskills()
 	all_tasks_main = create_random_tasks(all_subskills)
 	all_tasks = copy.deepcopy(all_tasks_main)
