@@ -417,7 +417,7 @@ def print_belief(belief):
 			b.append(0)
 		else:
 			b.append(round(v, 2))
-	print b
+	#print b
 	
 def find_el(the_list, the_el):
 	i = 0
@@ -1077,7 +1077,7 @@ all_handcrafted_dist = []
 all_perfect_dist = []
 
 for p in all_people_main:
-	print p.name
+	print (p.name)
 	person_random = copy.deepcopy(p)
 	all_tasks = copy.deepcopy(all_tasks_main)
 	random_reward, random_known, random_distance = condition_random(person_random)
@@ -1204,10 +1204,10 @@ sum_perfect_dist = [sum(x) for x in zip(*all_perfect_dist)]
 # ~ average_handcrafted = [(x / n_rounds)-2 for x  in sum_handcrafted] 
 # ~ average_perfect = [(x / n_rounds)-2 for x  in sum_perfect] 
 
-average_random2 = [7-((x / n_rounds)-2) for x  in sum_random] 
-average_bktpomdp2 = [7-((x / n_rounds)-2) for x  in sum_bktpomdp] 
-average_handcrafted2 = [7-((x / n_rounds)-2) for x  in sum_handcrafted] 
-average_perfect2 = [7-((x / n_rounds)-2) for x  in sum_perfect] 
+average_random2 = [((x / n_rounds)-2) for x  in sum_random] 
+average_bktpomdp2 = [((x / n_rounds)-2) for x  in sum_bktpomdp] 
+average_handcrafted2 = [((x / n_rounds)-2) for x  in sum_handcrafted] 
+average_perfect2 = [((x / n_rounds)-2) for x  in sum_perfect] 
 
 
 average_random_known = [float(x) / n_rounds for x  in sum_random_known]
@@ -1240,14 +1240,14 @@ plt.rcParams.update({'font.size': 18})
 
 plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
-plt.title('Average Skill Correctness')
+plt.title('Distance to True Skill State')
 plt.plot(average_bktpomdp2, color='red')
 plt.plot(average_random2, color='green')
 plt.plot(average_handcrafted2, color='blue')
 plt.plot(average_perfect2, color='yellow')
 plt.axis([0, n_actions, 0, 0.5*n_subskills - 2])
 plt.xlabel('Action Number')
-plt.ylabel("Similirity to True Skills")
+plt.ylabel("Distance of Belief b to True State S")
 plt.show()
 
 plt.figure(figsize=(6,5))
