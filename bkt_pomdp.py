@@ -229,13 +229,12 @@ def distance_to_medium(belief):
 			distance += belief[i]
 	return distance		
 	
-#claculates the reward using KLD
+#calculates the reward using KLD
 def R_obs(previous_belief, future_belief):
 	
 	sum_previous=0
 	sum_future=0
 	for i in range(0, n_subskills):
-		#print future_belief[i]
 		if (future_belief[i] == 0):
 			future_belief[i] = 0.0000001
 		if (future_belief[i] == 1):
@@ -634,11 +633,6 @@ sum_handcrafted_dist = [sum(x) for x in zip(*all_handcrafted_dist)]
 sum_perfect_dist = [sum(x) for x in zip(*all_perfect_dist)]
 
 
-# ~ average_random2 = [10-((x / n_rounds)) for x  in sum_random] 
-# ~ average_bktpomdp2 = [10-((x / n_rounds)) for x  in sum_bktpomdp] 
-# ~ average_handcrafted2 = [10-((x / n_rounds)) for x  in sum_handcrafted] 
-# ~ average_perfect2 = [10-((x / n_rounds)) for x  in sum_perfect] 
-
 average_random2 = [((x / n_rounds)) for x  in sum_random] 
 average_bktpomdp2 = [((x / n_rounds)) for x  in sum_bktpomdp] 
 average_handcrafted2 = [((x / n_rounds)) for x  in sum_handcrafted] 
@@ -656,12 +650,13 @@ average_bktpomdp_dist2 = [10-((x / n_rounds)) for x  in sum_bktpomdp_dist]
 average_handcrafted_dist2 = [10-((x / n_rounds)) for x  in sum_handcrafted_dist] 
 average_perfect_dist2 = [10-((x / n_rounds)) for x  in sum_perfect_dist] 
 
-
+#generates the figures
 plt.rcParams['font.family'] = 'serif'
 plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 plt.rcParams.update({'font.size': 18})
 
 
+#Shows how accurate the belief vector is compared to the true skill vector
 plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Distance to True Skill State')
@@ -674,18 +669,8 @@ plt.xlabel('Action Number')
 plt.ylabel("Distance of Belief b to True State S")
 plt.show()
 
-plt.figure(figsize=(8,5))
-plt.gcf().subplots_adjust(bottom=0.15)
-plt.title('Distance to True Skill State')
-plt.plot(average_bktpomdp2, color='red')
-plt.plot(average_random2, color='green')
-plt.plot(average_handcrafted2, color='blue')
-plt.plot(average_perfect2, color='yellow')
-plt.axis([0, n_actions, 0, 0.5*n_subskills])
-plt.xlabel('Action Number')
-plt.ylabel("Distance of belief b to True State S")
-plt.show()
 
+#Shows how certain the belief vector is. Distance from 0.5
 plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Skill Confidence')
@@ -698,6 +683,7 @@ plt.xlabel('Action Number')
 plt.ylabel("Confidence across all skills")
 plt.show()
 
+#Shows the number of skills which it has very high certainty over.
 plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Skill Certainty')

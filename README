@@ -1,0 +1,10 @@
+To run:
+
+EXP1:
+python3 bkt_pomdp.py
+
+EXP2:
+python3 bkt_pomdp_real.py
+
+EXP3:
+python3 bkt_pomdp_teaching.py

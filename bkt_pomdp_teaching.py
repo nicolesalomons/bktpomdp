@@ -565,7 +565,7 @@ def condition_bktpomdp(person):
 
 n_subskills = 20 
 n_tasks = 200 
-n_rounds = 10
+n_rounds = 100
 n_actions = 40 
 
 
@@ -741,7 +741,7 @@ average_bktpomdp_1dist = [(n_subskills/2)-((x / n_rounds)) for x  in sum_bktpomd
 average_handcrafted_1dist = [(n_subskills/2)-((x / n_rounds)) for x  in sum_handcrafted_1dist] 
 average_perfect_1dist = [(n_subskills/2)-((x / n_rounds)) for x  in sum_perfect_1dist] 
 
-
+#generates the figures
 plt.rcParams['font.family'] = 'serif'
 plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
 plt.rcParams.update({'font.size': 18})
@@ -772,6 +772,7 @@ plt.rcParams.update({'font.size': 18})
 # ~ plt.ylabel("Number of Skills with Certainty")
 # ~ plt.show()
 
+#Shows how distant the true skill state is from 1, where all skills are mastered.
 plt.figure(figsize=(8,5))
 plt.gcf().subplots_adjust(bottom=0.15)
 plt.title('Average Number of Mastered Skills')
