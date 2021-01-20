@@ -601,7 +601,7 @@ for i in range(0,n_rounds):
 	all_subskills = create_random_subskills()
 	all_tasks_main = create_random_tasks(all_subskills)
 	all_tasks = copy.deepcopy(all_tasks_main)
-	person = Person("Nicole", all_tasks)
+	person = Person("Name", all_tasks)
 	
 	person_random = copy.deepcopy(person)
 	all_tasks = copy.deepcopy(all_tasks_main)
